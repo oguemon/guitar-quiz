@@ -5,6 +5,12 @@
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  gap: 20px;
+}
+
+.quiz {
+  display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 
@@ -16,4 +22,23 @@
 .emphasis {
   padding: 0 5px;
   font-size: 32px;
+}
+
+.answer {
+  padding: 20px;
+  background-color: var(--color-background);
+  border-radius: 5px;
+}
+
+.answerLabel {
+  margin: 0;
+  color: #f55;
+  font-size: 16px;
+}
+
+.answerButtonContainer {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }

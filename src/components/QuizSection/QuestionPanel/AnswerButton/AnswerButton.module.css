@@ -1,0 +1,15 @@
+.module {
+  padding: 0 10px;
+  min-width: 48px;
+  height: 48px;
+  font-size: 24px;
+  line-height: 48px;
+  background-color: white;
+  border: 1px solid #f88;
+  border-radius: 3px;
+  transition: background-color 0.1s linear;
+}
+
+.module:hover {
+  background-color: #eee;
+}

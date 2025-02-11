@@ -37,6 +37,7 @@ input[type='checkbox'] {
 }
 
 button {
+  color: var(--color-text-base);
   font-size: inherit;
   border: none;
   background-color: transparent;

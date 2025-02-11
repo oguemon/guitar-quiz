@@ -7,7 +7,6 @@ import { PrimaryButton } from './PrimaryButton/PrimaryButton';
 import { QuestionPanel } from './QuestionPanel/QuestionPanel';
 import styles from './QuizSection.module.css';
 import { ResultPanel } from './ResultPanel/ResultPanel';
-import { SelectAnswerPanel } from './SelectAnswerPanel/SelectAnswerPanel';
 import { SettingPanel } from './SettingPanel/SettingPanel';
 
 export const QuizSection: FC = () => {
@@ -61,9 +60,10 @@ export const QuizSection: FC = () => {
 
   return (
     <div className={styles.module}>
-      <QuestionPanel totalCount={totalCount} quiz={question} />
-      <SelectAnswerPanel
-        answerOptions={question.answerOptions}
+      <QuestionPanel
+        totalCount={totalCount}
+        quiz={question}
+        hasAnswered={currentStatus === 'check-answer'}
         onAnswer={handleAnswer}
       />
       {currentStatus === 'check-answer' && (

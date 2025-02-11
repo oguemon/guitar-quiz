@@ -8,7 +8,7 @@ export const useQuiz = (setting: QuizSetting) => {
   const answerNotes =
     setting.answerOptions === 'only-c-maj'
       ? [0, 2, 3, 5, 7, 8, 10]
-      : Array.from({ length: 12 }).map((_, i) => i); // all: 0-11の連番
+      : [0, 2, 3, 5, 7, 8, 10, 1, 4, 6, 9, 11];
   const totalCount = setting.totalCount;
 
   const [currentStatus, setCurrentStatus] = useState<QuizStatus>('standby');
