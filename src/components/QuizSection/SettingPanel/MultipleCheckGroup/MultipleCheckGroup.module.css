@@ -1,0 +1,33 @@
+.module {
+  display: flex;
+}
+
+.label {
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.1s linear;
+  border: 1px solid var(--color-border-main);
+  border-left: none;
+}
+
+.listItem:first-of-type .label {
+  border-radius: 5px 0 0 5px;
+  border-left: 1px solid var(--color-border-main);
+}
+
+.listItem:last-of-type .label {
+  border-radius: 0 5px 5px 0;
+}
+
+.label:hover {
+  background-color: #eee;
+}
+
+.inputCheckBox:focus-visible + .label {
+  outline: auto;
+}
+
+.inputCheckBox:checked + .label {
+  color: white;
+  background-color: #f55;
+}

@@ -1,6 +1,9 @@
 import { FC } from 'react';
 import type { QuizSetting, StringPosition } from '../../../type';
+import { MultipleCheckGroup } from './MultipleCheckGroup/MultipleCheckGroup';
+import { SettingListItem } from './SettingListItem/SettingListItem';
 import styles from './SettingPanel.module.css';
+import { SingleCheckGroup } from './SingleCheckGroup/SingleCheckGroup';
 
 type Props = {
   setting: QuizSetting;
@@ -42,78 +45,60 @@ export const SettingPanel: FC<Props> = ({ setting, onChange }) => {
 
   return (
     <div className={styles.module}>
-      <h2>設定</h2>
-      <h3>種別</h3>
+      <h2 className={styles.title}>クイズ設定</h2>
       <ul>
-        <li>
-          <label>
-            <input
-              type="radio"
-              name="quizType"
-              value="NoteQuiz"
-              checked={setting.type === 'NoteQuiz'}
-              onChange={(e) => handleChangeQuizType(e.target.value)}
-            />
-            音名当て
-          </label>
-        </li>
+        <SettingListItem title="クイズの種類">
+          <SingleCheckGroup
+            name="quizType"
+            value={setting.type}
+            options={[{ value: 'NoteQuiz', label: '音名当て' }]}
+            onChange={(value) => handleChangeQuizType(value)}
+          />
+          <div className={styles.example}>
+            {setting.type === 'NoteQuiz'
+              ? '弦とフレットの位置から音名を当てるクイズです。'
+              : ''}
+          </div>
+        </SettingListItem>
+        <SettingListItem title="音名">
+          <SingleCheckGroup
+            name="answerOptions"
+            value={setting.answerOptions}
+            options={[
+              { value: 'only-c-maj', label: 'C-major' },
+              { value: 'all', label: '全て' },
+            ]}
+            onChange={(value) => handleChangeAnswerOptions(value)}
+          />
+          <div className={styles.example}>
+            {setting.answerOptions === 'only-c-maj'
+              ? '例：A, B, C, D, F, ...'
+              : '例：A, A♯, B, C, C♯, ...'}
+          </div>
+        </SettingListItem>
+        <SettingListItem title="弦">
+          <MultipleCheckGroup
+            name="targetString"
+            values={setting.targetString.map((s) => String(s))}
+            options={([6, 5, 4, 3, 2, 1] as const).map((value) => ({
+              value: String(value),
+              label: value + '弦',
+            }))}
+            onChange={(value) => handleChangeTargetString(value)}
+          />
+        </SettingListItem>
+        <SettingListItem title="問題数">
+          <SingleCheckGroup
+            name="totalCount"
+            value={String(setting.totalCount)}
+            options={([3, 5, 10, 30, 60] as const).map((value) => ({
+              value: String(value),
+              label: value + '問',
+            }))}
+            onChange={(value) => handleChangeTotalCount(value)}
+          />
+        </SettingListItem>
       </ul>
-      <h3>音名の範囲</h3>
-      <ul>
-        <li>
-          <label>
-            <input
-              type="radio"
-              name="answerOptions"
-              value="all"
-              checked={setting.answerOptions === 'all'}
-              onChange={(e) => handleChangeAnswerOptions(e.currentTarget.value)}
-            />
-            全て（A, A♯, B, ...）
-          </label>
-        </li>
-        <li>
-          <label>
-            <input
-              type="radio"
-              name="answerOptions"
-              value="only-c-maj"
-              checked={setting.answerOptions === 'only-c-maj'}
-              onChange={(e) => handleChangeAnswerOptions(e.currentTarget.value)}
-            />
-            C-major（A, B, C, ...）
-          </label>
-        </li>
-      </ul>
-      <h3>弦の範囲</h3>
-      <ul>
-        {([1, 2, 3, 4, 5, 6] as const).map((value) => (
-          <li>
-            <label>
-              <input
-                type="checkbox"
-                name="targetString"
-                value={value}
-                checked={setting.targetString.includes(value)}
-                onChange={(e) =>
-                  handleChangeTargetString(e.currentTarget.value)
-                }
-              />
-              {value}弦
-            </label>
-          </li>
-        ))}
-      </ul>
-      <h3>問題数</h3>
-      <select
-        name="totalCount"
-        value={setting.totalCount}
-        onChange={(e) => handleChangeTotalCount(e.currentTarget.value)}
-      >
-        {[3, 5, 10].map((value) => (
-          <option>{value}</option>
-        ))}
-      </select>
     </div>
   );
 };

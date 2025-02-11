@@ -1,0 +1,16 @@
+.module {
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--color-border-main);
+  display: flex;
+  align-items: center;
+}
+
+.module:last-of-type {
+  border-bottom: none;
+}
+
+.title {
+  min-width: 140px;
+  margin: 0;
+  font-size: 16px;
+}

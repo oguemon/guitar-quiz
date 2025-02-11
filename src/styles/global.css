@@ -1,9 +1,39 @@
+:root {
+  --color-background: #ffe8e8;
+  --color-text-base: #333;
+  --color-text-sub: #777;
+  --color-border-main: #f88;
+}
+
 body {
   margin: 0;
+  color: var(--color-text-base);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
 }
 
 p {
   margin: 0;
+}
+
+/* ブラウザデフォルトのものは表示させないがフォーカス制御は効くようにする */
+input[type='radio'],
+input[type='checkbox'] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: none;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
 }
 
 button {
