@@ -4,3 +4,9 @@
   align-items: center;
   gap: 10px;
 }
+
+@media (max-width: 640px) {
+  .module {
+    justify-content: center;
+  }
+}
