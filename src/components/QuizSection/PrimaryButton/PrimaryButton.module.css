@@ -1,7 +1,6 @@
 .module {
-  width: 100%;
-  max-width: 420px;
   height: 48px;
+  padding: 0 60px;
   color: white;
   font-size: 20px;
   font-weight: bold;
@@ -16,7 +15,9 @@
 }
 
 .module:disabled {
-  color: #555;
-  background-color: #ccc;
-  border: 1px solid #888;
+  color: #777;
+  font-weight: normal;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  box-shadow: none;
 }

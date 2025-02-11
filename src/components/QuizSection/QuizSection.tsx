@@ -2,8 +2,6 @@ import { FC } from 'react';
 import { useQuiz } from '../../hooks/useQuiz';
 import { useQuizSetting } from '../../hooks/useQuizSetting';
 import { AnswerPanel } from './AnswerPanel/AnswerPanel';
-import { NormalButton } from './NormalButton/NormalButton';
-import { PrimaryButton } from './PrimaryButton/PrimaryButton';
 import { QuestionPanel } from './QuestionPanel/QuestionPanel';
 import styles from './QuizSection.module.css';
 import { ResultPanel } from './ResultPanel/ResultPanel';
@@ -28,15 +26,12 @@ export const QuizSection: FC = () => {
   if (currentStatus === 'standby') {
     return (
       <div className={styles.module}>
-        <p>これからクイズを開始します。</p>
-        <SettingPanel setting={quizSetting} onChange={handleChangeSetting} />
-        <div className={styles.buttonContainer}>
-          <PrimaryButton
-            label="出題開始"
-            onClick={() => handleClickStartButton()}
-            disabled={!isValidSetting}
-          />
-        </div>
+        <SettingPanel
+          setting={quizSetting}
+          isValidSetting={isValidSetting}
+          onChangeSetting={handleChangeSetting}
+          onClickStartButton={handleClickStartButton}
+        />
       </div>
     );
   }
@@ -44,13 +39,11 @@ export const QuizSection: FC = () => {
   if (currentStatus === 'view-result') {
     return (
       <div className={styles.module}>
-        <ResultPanel history={history} totalCount={totalCount} />
-        <div className={styles.buttonContainer}>
-          <PrimaryButton
-            label="最初に戻る"
-            onClick={() => handleClickReturnButton()}
-          />
-        </div>
+        <ResultPanel
+          history={history}
+          totalCount={totalCount}
+          onClickReturnButton={handleClickReturnButton}
+        />
       </div>
     );
   }
@@ -70,28 +63,13 @@ export const QuizSection: FC = () => {
       {currentStatus === 'check-answer' && (
         <AnswerPanel
           isOpenResultDialog={isOpenResultDialog}
+          isFinalAnswer={question.count < totalCount}
           selectedAnswer={selectedAnswer}
           correctAnswer={question.answer}
+          onClickNextButton={handleClickNextButton}
+          onClickViewResultButton={handleClickViewResultButton}
+          onClickReturnButton={handleClickReturnButton}
         />
-      )}
-      {currentStatus === 'check-answer' && (
-        <div className={styles.buttonContainer}>
-          {question.count < totalCount ? (
-            <PrimaryButton
-              label="次の問題"
-              onClick={() => handleClickNextButton()}
-            />
-          ) : (
-            <PrimaryButton
-              label="結果を見る"
-              onClick={() => handleClickViewResultButton()}
-            />
-          )}
-          <NormalButton
-            label="最初に戻る"
-            onClick={() => handleClickReturnButton()}
-          />
-        </div>
       )}
     </div>
   );

@@ -1,12 +1,19 @@
 import { FC } from 'react';
+import { ButtonContainer } from '../ButtonContainer/ButtonContainer';
+import { PrimaryButton } from '../PrimaryButton/PrimaryButton';
 import styles from './ResultPanel.module.css';
 
 type Props = {
   history: boolean[];
   totalCount: number;
+  onClickReturnButton: () => void;
 };
 
-export const ResultPanel: FC<Props> = ({ history, totalCount }) => {
+export const ResultPanel: FC<Props> = ({
+  history,
+  totalCount,
+  onClickReturnButton,
+}) => {
   const correctCount = history.filter((isCorrect) => isCorrect).length;
   const correctRate = Math.floor((correctCount / totalCount) * 100);
   return (
@@ -44,6 +51,12 @@ export const ResultPanel: FC<Props> = ({ history, totalCount }) => {
           ))}
         </table>
       </div>
+      <ButtonContainer>
+        <PrimaryButton
+          label="最初に戻る"
+          onClick={() => onClickReturnButton()}
+        />
+      </ButtonContainer>
     </div>
   );
 };

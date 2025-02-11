@@ -1,5 +1,7 @@
 import { FC } from 'react';
 import type { QuizSetting, StringPosition } from '../../../type';
+import { ButtonContainer } from '../ButtonContainer/ButtonContainer';
+import { PrimaryButton } from '../PrimaryButton/PrimaryButton';
 import { MultipleCheckGroup } from './MultipleCheckGroup/MultipleCheckGroup';
 import { SettingListItem } from './SettingListItem/SettingListItem';
 import styles from './SettingPanel.module.css';
@@ -7,19 +9,26 @@ import { SingleCheckGroup } from './SingleCheckGroup/SingleCheckGroup';
 
 type Props = {
   setting: QuizSetting;
-  onChange: (value: QuizSetting) => void;
+  isValidSetting: boolean;
+  onChangeSetting: (value: QuizSetting) => void;
+  onClickStartButton: () => void;
 };
 
-export const SettingPanel: FC<Props> = ({ setting, onChange }) => {
+export const SettingPanel: FC<Props> = ({
+  setting,
+  isValidSetting,
+  onChangeSetting,
+  onClickStartButton,
+}) => {
   const handleChangeQuizType = (value: string) => {
-    onChange({
+    onChangeSetting({
       ...setting,
       type: value as QuizSetting['type'],
     });
   };
 
   const handleChangeAnswerOptions = (value: string) => {
-    onChange({
+    onChangeSetting({
       ...setting,
       answerOptions: value as QuizSetting['answerOptions'],
     });
@@ -30,14 +39,14 @@ export const SettingPanel: FC<Props> = ({ setting, onChange }) => {
     const targetString = setting.targetString.includes(selectedString)
       ? setting.targetString.filter((s) => s !== selectedString)
       : [...setting.targetString, selectedString];
-    onChange({
+    onChangeSetting({
       ...setting,
       targetString,
     });
   };
 
   const handleChangeTotalCount = (value: string) => {
-    onChange({
+    onChangeSetting({
       ...setting,
       totalCount: Number(value),
     });
@@ -45,7 +54,7 @@ export const SettingPanel: FC<Props> = ({ setting, onChange }) => {
 
   return (
     <div className={styles.module}>
-      <h2 className={styles.title}>クイズ設定</h2>
+      <h2 className={styles.title}>クイズを開始する</h2>
       <ul>
         <SettingListItem title="クイズの種類">
           <SingleCheckGroup
@@ -99,6 +108,13 @@ export const SettingPanel: FC<Props> = ({ setting, onChange }) => {
           />
         </SettingListItem>
       </ul>
+      <ButtonContainer>
+        <PrimaryButton
+          label="出題開始"
+          onClick={() => onClickStartButton()}
+          disabled={!isValidSetting}
+        />
+      </ButtonContainer>
     </div>
   );
 };
