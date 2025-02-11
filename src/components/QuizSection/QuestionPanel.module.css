@@ -3,9 +3,10 @@
   background-color: white;
   border: 1px solid #f88;
   border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+}
+
+.count {
+  font-weight: bold;
 }
 
 .title {

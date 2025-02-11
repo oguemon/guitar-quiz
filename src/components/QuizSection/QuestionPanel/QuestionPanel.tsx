@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import type { Quiz } from '../../../type';
+import { CountBadge } from './CountBadge/CountBadge';
 import styles from './QuestionPanel.module.css';
 
 type Props = {
@@ -11,10 +12,8 @@ export const QuestionPanel: FC<Props> = ({ quiz, totalCount }) => {
   if (quiz.type === 'NoteQuiz') {
     return (
       <div className={styles.module}>
-        <div className={styles.count}>
-          {quiz.count}問目／全{totalCount}問
-        </div>
-        <h2 className={styles.title}>次の位置にある音名を答えよ</h2>
+        <CountBadge currentCount={quiz.count} totalCount={totalCount} />
+        <h2 className={styles.title}>次の位置にある音名は何？</h2>
         <p>
           <strong className={styles.emphasis}>{quiz.stringPosition}</strong>弦の
           <strong className={styles.emphasis}>{quiz.flatPosition}</strong>

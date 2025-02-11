@@ -1,0 +1,24 @@
+.module {
+  display: inline-flex;
+}
+
+.currentCount,
+.totalCount {
+  padding: 0 10px;
+  height: 28px;
+  line-height: 28px;
+  font-weight: bold;
+}
+
+.currentCount {
+  color: #f55;
+  border: 1px solid #f55;
+  border-radius: 14px 0 0 14px;
+}
+
+.totalCount {
+  color: white;
+  background-color: #f55;
+  border: 1px solid #f55;
+  border-radius: 0 14px 14px 0;
+}
