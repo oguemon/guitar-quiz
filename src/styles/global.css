@@ -1,3 +1,18 @@
 body {
   margin: 0;
 }
+
+p {
+  margin: 0;
+}
+
+button {
+  font-size: inherit;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}

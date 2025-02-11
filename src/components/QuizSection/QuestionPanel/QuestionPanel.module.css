@@ -1,0 +1,20 @@
+.module {
+  padding: 20px;
+  background-color: white;
+  border: 1px solid #f88;
+  border-radius: 5px;
+}
+
+.count {
+  font-weight: bold;
+}
+
+.title {
+  margin: 0;
+  font-size: 20px;
+}
+
+.emphasis {
+  padding: 0 5px;
+  font-size: 32px;
+}

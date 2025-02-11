@@ -1,3 +1,8 @@
 .module {
-  color: red;
+  background-color: #fcc;
+}
+
+.main {
+  width: 720px;
+  margin: 0 auto;
 }
