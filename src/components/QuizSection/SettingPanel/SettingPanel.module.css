@@ -13,7 +13,11 @@
   font-size: 24px;
 }
 
+.settingList {
+  background-color: #f8f8f8;
+  border-radius: 5px;
+}
+
 .example {
   margin-top: 5px;
-  color: var(--color-text-sub);
 }

@@ -6,6 +6,7 @@
   padding: 5px 10px;
   cursor: pointer;
   transition: background-color 0.1s linear;
+  background-color: white;
   border: 1px solid var(--color-border-main);
   border-left: none;
 }

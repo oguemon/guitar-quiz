@@ -55,7 +55,7 @@ export const SettingPanel: FC<Props> = ({
   return (
     <div className={styles.module}>
       <h2 className={styles.title}>クイズを開始する</h2>
-      <ul>
+      <ul className={styles.settingList}>
         <SettingListItem title="クイズの種類">
           <SingleCheckGroup
             name="quizType"

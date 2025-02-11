@@ -1,6 +1,6 @@
 .module {
-  padding: 10px 0;
-  border-bottom: 1px dashed var(--color-border-main);
+  padding: 10px;
+  border-bottom: 1px dashed var(--color-border-base);
   display: flex;
   align-items: center;
 }
