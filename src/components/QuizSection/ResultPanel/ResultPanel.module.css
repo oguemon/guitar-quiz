@@ -3,4 +3,55 @@
   background-color: white;
   border: 1px solid #f88;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  margin: 0;
+  font-size: 28px;
+}
+
+.message {
+  color: var(--color-text-sub);
+}
+
+.resultItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.label {
+  height: 24px;
+  padding: 0 10px;
+  color: white;
+  font-weight: bold;
+  background-color: #f55;
+  border-radius: 12px;
+}
+
+.resultValue {
+  padding-right: 5px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.detailTableLine:nth-of-type(odd) {
+  background-color: #fee;
+}
+
+.detailTableLine:nth-of-type(even) {
+  background-color: #fff5f5;
+}
+
+.detailTableHeaderCell {
+  color: white;
+  background-color: #f55;
+}
+
+.detailTableBodyCell {
+  width: 120px;
+  text-align: center;
 }
