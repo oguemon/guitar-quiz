@@ -1,0 +1,10 @@
+.module {
+  height: 48px;
+  color: #f55;
+  font-size: 16px;
+  border-radius: 3px;
+}
+
+.module:hover {
+  text-decoration: underline;
+}

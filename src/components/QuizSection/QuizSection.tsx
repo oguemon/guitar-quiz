@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { useQuiz } from '../../hooks/useQuiz';
 import { useQuizSetting } from '../../hooks/useQuizSetting';
 import { AnswerPanel } from './AnswerPanel/AnswerPanel';
+import { NormalButton } from './NormalButton/NormalButton';
 import { PrimaryButton } from './PrimaryButton/PrimaryButton';
 import { QuestionPanel } from './QuestionPanel/QuestionPanel';
 import styles from './QuizSection.module.css';
@@ -29,11 +30,13 @@ export const QuizSection: FC = () => {
       <div className={styles.module}>
         <p>これからクイズを開始します。</p>
         <SettingPanel setting={quizSetting} onChange={handleChangeSetting} />
-        <PrimaryButton
-          label="出題開始"
-          onClick={() => handleClickStartButton()}
-          disabled={!isValidSetting}
-        />
+        <div className={styles.buttonContainer}>
+          <PrimaryButton
+            label="出題開始"
+            onClick={() => handleClickStartButton()}
+            disabled={!isValidSetting}
+          />
+        </div>
       </div>
     );
   }
@@ -42,7 +45,7 @@ export const QuizSection: FC = () => {
     return (
       <div className={styles.module}>
         <ResultPanel history={history} totalCount={totalCount} />
-        <div>
+        <div className={styles.buttonContainer}>
           <PrimaryButton
             label="最初に戻る"
             onClick={() => handleClickReturnButton()}
@@ -69,23 +72,25 @@ export const QuizSection: FC = () => {
           correctAnswer={question.answer}
         />
       )}
-      <div>
-        {question.count < totalCount ? (
-          <PrimaryButton
-            label="次の問題"
-            onClick={() => handleClickNextButton()}
+      {currentStatus === 'check-answer' && (
+        <div className={styles.buttonContainer}>
+          {question.count < totalCount ? (
+            <PrimaryButton
+              label="次の問題"
+              onClick={() => handleClickNextButton()}
+            />
+          ) : (
+            <PrimaryButton
+              label="結果を見る"
+              onClick={() => handleClickViewResultButton()}
+            />
+          )}
+          <NormalButton
+            label="最初に戻る"
+            onClick={() => handleClickReturnButton()}
           />
-        ) : (
-          <PrimaryButton
-            label="結果を見る"
-            onClick={() => handleClickViewResultButton()}
-          />
-        )}
-        <PrimaryButton
-          label="最初に戻る"
-          onClick={() => handleClickReturnButton()}
-        />
-      </div>
+        </div>
+      )}
     </div>
   );
 };
