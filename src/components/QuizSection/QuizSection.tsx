@@ -17,6 +17,7 @@ export const QuizSection: FC = () => {
     question,
     selectedAnswer,
     history,
+    isOpenResultDialog,
     handleClickStartButton,
     handleAnswer,
     handleClickNextButton,
@@ -68,6 +69,7 @@ export const QuizSection: FC = () => {
       />
       {currentStatus === 'check-answer' && (
         <AnswerPanel
+          isOpenResultDialog={isOpenResultDialog}
           selectedAnswer={selectedAnswer}
           correctAnswer={question.answer}
         />

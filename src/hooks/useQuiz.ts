@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NOTE_MAP } from '../constants';
 import { convertToFlat } from '../functions/noteConverter';
 import { randomN } from '../functions/random';
@@ -15,6 +15,16 @@ export const useQuiz = (setting: QuizSetting) => {
   const [question, setQuestion] = useState<Quiz | undefined>(undefined);
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [history, setHistory] = useState<boolean[]>([]);
+  const [isOpenResultDialog, setIsOpenResultDialog] = useState(false);
+
+  // MEMO: 結果ダイアログを開いたら1秒後に閉じる
+  useEffect(() => {
+    let code: number | undefined = undefined;
+    if (isOpenResultDialog) {
+      code = setTimeout(() => setIsOpenResultDialog(false), 1000);
+    }
+    return () => clearTimeout(code);
+  }, [isOpenResultDialog]);
 
   const createNoteQuiz = (): Quiz => {
     const targetString = setting.targetString;
@@ -43,6 +53,7 @@ export const useQuiz = (setting: QuizSetting) => {
     const isCorrect = question?.answer === value;
     setHistory((history) => [...history, isCorrect]);
     setSelectedAnswer(value);
+    setIsOpenResultDialog(true);
   };
 
   const handleClickNextButton = () => {
@@ -70,6 +81,7 @@ export const useQuiz = (setting: QuizSetting) => {
     question,
     selectedAnswer,
     history,
+    isOpenResultDialog,
     handleClickStartButton,
     handleAnswer,
     handleClickNextButton,

@@ -3,4 +3,25 @@
   background-color: white;
   border: 1px solid #f88;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.result {
+  font-size: 32px;
+}
+
+.correct {
+  color: var(--color-text-correct);
+}
+
+.notCorrect {
+  color: var(--color-text-not-correct);
+}
+
+.checkAnswer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

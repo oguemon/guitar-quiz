@@ -1,0 +1,56 @@
+.overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  inset: 0;
+  animation: overlayShow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.title {
+  width: 100%;
+  max-width: 300px;
+  max-height: 120px;
+  padding: 25px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 200px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: contentShow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes overlayShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes contentShow {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.correct,
+.notCorrect {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.correct {
+  color: var(--color-text-correct);
+}
+
+.notCorrect {
+  color: var(--color-text-not-correct);
+}
