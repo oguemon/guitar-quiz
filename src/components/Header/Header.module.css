@@ -1,8 +1,13 @@
 .module {
   height: 50px;
+  padding: 0 10px;
   color: white;
   background-color: #f55;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.logo {
+  max-height: 100%;
 }
