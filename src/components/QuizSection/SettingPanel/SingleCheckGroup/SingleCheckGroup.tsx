@@ -22,7 +22,7 @@ export const SingleCheckGroup: FC<Props> = ({
   return (
     <ul className={styles.module}>
       {options.map((option) => (
-        <li className={styles.listItem}>
+        <li key={option.value} className={styles.listItem}>
           <label>
             <input
               className={styles.inputCheckBox}

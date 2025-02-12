@@ -37,18 +37,22 @@ export const ResultPanel: FC<Props> = ({
       </div>
       <div>
         <table>
-          <tr className={styles.detailTableLine}>
-            <th className={styles.detailTableHeaderCell}>問題</th>
-            <th className={styles.detailTableHeaderCell}>正誤</th>
-          </tr>
-          {history.map((correct, index) => (
+          <thead>
             <tr className={styles.detailTableLine}>
-              <td className={styles.detailTableBodyCell}>第{index + 1}問</td>
-              <td className={styles.detailTableBodyCell}>
-                {correct ? '⭕️' : '❌'}
-              </td>
+              <th className={styles.detailTableHeaderCell}>問題</th>
+              <th className={styles.detailTableHeaderCell}>正誤</th>
             </tr>
-          ))}
+          </thead>
+          <tbody>
+            {history.map((correct, index) => (
+              <tr className={styles.detailTableLine}>
+                <td className={styles.detailTableBodyCell}>第{index + 1}問</td>
+                <td className={styles.detailTableBodyCell}>
+                  {correct ? '⭕️' : '❌'}
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
       <ButtonContainer>
