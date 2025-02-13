@@ -9,6 +9,9 @@
 }
 
 * {
+  font-family:
+    'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', メイリオ, Meiryo,
+    sans-serif;
   box-sizing: border-box;
 }
 
