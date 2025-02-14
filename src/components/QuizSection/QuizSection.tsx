@@ -41,6 +41,7 @@ export const QuizSection: FC = () => {
     return (
       <div className={styles.module}>
         <ResultPanel
+          setting={quizSetting}
           history={history}
           totalCount={totalCount}
           seconds={seconds}

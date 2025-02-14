@@ -1,9 +1,12 @@
 import { FC } from 'react';
+import type { QuizSetting } from '../../../type';
 import { ButtonContainer } from '../ButtonContainer/ButtonContainer';
 import { PrimaryButton } from '../PrimaryButton/PrimaryButton';
 import styles from './ResultPanel.module.css';
+import { RulePanel } from './RulePanel/RulePanel';
 
 type Props = {
+  setting: QuizSetting;
   history: boolean[];
   totalCount: number;
   seconds: number;
@@ -11,6 +14,7 @@ type Props = {
 };
 
 export const ResultPanel: FC<Props> = ({
+  setting,
   history,
   totalCount,
   seconds,
@@ -56,6 +60,7 @@ export const ResultPanel: FC<Props> = ({
           </div>
         </div>
       </div>
+      <RulePanel setting={setting} />
       <div>
         <details className={styles.detailContainer}>
           <summary>問題別の内訳</summary>

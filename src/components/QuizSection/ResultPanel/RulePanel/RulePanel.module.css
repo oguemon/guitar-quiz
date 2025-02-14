@@ -1,0 +1,39 @@
+.module {
+  padding: 15px;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+}
+
+.title {
+  margin: 0;
+  font-size: 16px;
+}
+
+.ruleList {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ruleCapsule {
+  display: flex;
+}
+
+.ruleCapsule div {
+  padding: 2px 10px;
+}
+
+.ruleCapsule div:first-of-type {
+  color: white;
+  font-weight: bold;
+  background-color: #555;
+  border-radius: 5px 0 0 5px;
+}
+
+.ruleCapsule div:last-of-type {
+  color: #555;
+  background-color: white;
+  border: 1px solid #555;
+  border-radius: 0 5px 5px 0;
+}
