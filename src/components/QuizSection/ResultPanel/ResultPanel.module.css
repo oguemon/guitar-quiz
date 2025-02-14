@@ -55,6 +55,14 @@
   color: var(--color-text-sub);
 }
 
+.detailContainer {
+  display: inline-block;
+}
+
+.detailPanel {
+  padding-top: 10px;
+}
+
 .detailTableLine:nth-of-type(odd) {
   background-color: #fee;
 }

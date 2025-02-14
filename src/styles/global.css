@@ -33,6 +33,10 @@ p {
   margin: 0;
 }
 
+summary {
+  cursor: pointer;
+}
+
 /* ブラウザデフォルトのものは表示させないがフォーカス制御は効くようにする */
 input[type='radio'],
 input[type='checkbox'] {
