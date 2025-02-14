@@ -3,6 +3,7 @@ import { NOTE_MAP } from '../constants';
 import { convertToFlat } from '../functions/noteConverter';
 import { randomN } from '../functions/random';
 import type { Quiz, QuizSetting, QuizStatus } from '../type';
+import { useTimer } from './useTimer';
 
 export const useQuiz = (setting: QuizSetting) => {
   const answerNotes =
@@ -16,6 +17,7 @@ export const useQuiz = (setting: QuizSetting) => {
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [history, setHistory] = useState<boolean[]>([]);
   const [isOpenResultDialog, setIsOpenResultDialog] = useState(false);
+  const { seconds, startTimer, stopTimer } = useTimer();
 
   // MEMO: 結果ダイアログを開いたら1秒後に閉じる
   useEffect(() => {
@@ -46,6 +48,7 @@ export const useQuiz = (setting: QuizSetting) => {
     setQuestion(createNoteQuiz());
     setHistory([]);
     setSelectedAnswer('');
+    startTimer();
   };
 
   const handleAnswer = (value: string) => {
@@ -66,6 +69,7 @@ export const useQuiz = (setting: QuizSetting) => {
     setCurrentStatus('view-result');
     setQuestion(undefined);
     setSelectedAnswer('');
+    stopTimer();
   };
 
   const handleClickReturnButton = () => {
@@ -73,6 +77,7 @@ export const useQuiz = (setting: QuizSetting) => {
     setQuestion(undefined);
     setHistory([]);
     setSelectedAnswer('');
+    stopTimer();
   };
 
   return {
@@ -82,6 +87,7 @@ export const useQuiz = (setting: QuizSetting) => {
     selectedAnswer,
     history,
     isOpenResultDialog,
+    seconds,
     handleClickStartButton,
     handleAnswer,
     handleClickNextButton,

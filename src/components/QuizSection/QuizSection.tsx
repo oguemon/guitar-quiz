@@ -16,6 +16,7 @@ export const QuizSection: FC = () => {
     selectedAnswer,
     history,
     isOpenResultDialog,
+    seconds,
     handleClickStartButton,
     handleAnswer,
     handleClickNextButton,
@@ -42,6 +43,7 @@ export const QuizSection: FC = () => {
         <ResultPanel
           history={history}
           totalCount={totalCount}
+          seconds={seconds}
           onClickReturnButton={handleClickReturnButton}
         />
       </div>
@@ -58,6 +60,7 @@ export const QuizSection: FC = () => {
         totalCount={totalCount}
         quiz={question}
         hasAnswered={currentStatus === 'check-answer'}
+        seconds={seconds}
         onAnswer={handleAnswer}
       />
       {currentStatus === 'check-answer' && (

@@ -38,6 +38,23 @@
   font-weight: bold;
 }
 
+.timer {
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
+}
+
+@media (max-width: 640px) {
+  .timer {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+.secondsPerQuestion {
+  color: var(--color-text-sub);
+}
+
 .detailTableLine:nth-of-type(odd) {
   background-color: #fee;
 }

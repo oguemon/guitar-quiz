@@ -8,6 +8,11 @@
   gap: 20px;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .quiz {
   display: flex;
   flex-direction: column;

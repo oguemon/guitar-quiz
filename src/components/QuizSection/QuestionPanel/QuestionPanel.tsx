@@ -3,11 +3,13 @@ import type { Quiz } from '../../../type';
 import { AnswerButton } from './AnswerButton/AnswerButton';
 import { CountBadge } from './CountBadge/CountBadge';
 import styles from './QuestionPanel.module.css';
+import { Timer } from './Timer/Timer';
 
 type Props = {
   quiz: Quiz;
   totalCount: number;
   hasAnswered: boolean;
+  seconds: number;
   onAnswer: (selectedOption: string) => void;
 };
 
@@ -15,13 +17,17 @@ export const QuestionPanel: FC<Props> = ({
   quiz,
   totalCount,
   hasAnswered,
+  seconds,
   onAnswer,
 }) => {
   if (quiz.type === 'NoteQuiz') {
     return (
       <div className={styles.module}>
         <div className={styles.quiz}>
-          <CountBadge currentCount={quiz.count} totalCount={totalCount} />
+          <div className={styles.header}>
+            <CountBadge currentCount={quiz.count} totalCount={totalCount} />
+            <Timer seconds={seconds} />
+          </div>
           <h2 className={styles.title}>次の位置にある音名は何？</h2>
           <p>
             <strong className={styles.emphasis}>{quiz.stringPosition}</strong>

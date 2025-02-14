@@ -6,16 +6,21 @@ import styles from './ResultPanel.module.css';
 type Props = {
   history: boolean[];
   totalCount: number;
+  seconds: number;
   onClickReturnButton: () => void;
 };
 
 export const ResultPanel: FC<Props> = ({
   history,
   totalCount,
+  seconds,
   onClickReturnButton,
 }) => {
   const correctCount = history.filter((isCorrect) => isCorrect).length;
   const correctRate = Math.floor((correctCount / totalCount) * 100);
+  const answerMinutes = Math.floor(seconds / 60);
+  const answerSeconds = seconds % 60;
+  const answerSecondsPerQuestion = seconds / totalCount;
   return (
     <div className={styles.module}>
       <h2 className={styles.title}>結果発表</h2>
@@ -32,6 +37,22 @@ export const ResultPanel: FC<Props> = ({
           <div>
             <span className={styles.resultValue}>{correctCount}</span>
             問正解／全{totalCount}問
+          </div>
+        </div>
+        <div className={styles.resultItem}>
+          <div className={styles.label}>所要時間</div>
+          <div className={styles.timer}>
+            <div>
+              {answerMinutes > 0 && (
+                <>
+                  <span className={styles.resultValue}>{answerMinutes}</span>分
+                </>
+              )}
+              <span className={styles.resultValue}>{answerSeconds}</span>秒
+            </div>
+            <div className={styles.secondsPerQuestion}>
+              1問あたり{answerSecondsPerQuestion.toFixed(1)}秒
+            </div>
           </div>
         </div>
       </div>
