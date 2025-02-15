@@ -28,7 +28,6 @@ export const ResultPanel: FC<Props> = ({
   return (
     <div className={styles.module}>
       <h2 className={styles.title}>結果発表</h2>
-      <p className={styles.message}>お疲れ様でした！</p>
       <div>
         <div className={styles.resultItem}>
           <div className={styles.label}>正解率</div>
@@ -63,7 +62,7 @@ export const ResultPanel: FC<Props> = ({
       <RulePanel setting={setting} />
       <div>
         <details className={styles.detailContainer}>
-          <summary>問題別の内訳</summary>
+          <summary className={styles.detailSummary}>問題別の内訳</summary>
           <div className={styles.detailPanel}>
             <table>
               <thead>

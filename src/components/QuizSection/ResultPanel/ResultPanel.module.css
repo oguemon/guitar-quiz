@@ -13,10 +13,6 @@
   font-size: 28px;
 }
 
-.message {
-  color: var(--color-text-sub);
-}
-
 .resultItem {
   display: flex;
   align-items: center;
@@ -57,6 +53,14 @@
 
 .detailContainer {
   display: inline-block;
+}
+
+.detailSummary {
+  transition: color 0.1s linear;
+}
+
+.detailSummary:hover {
+  color: var(--color-text-sub);
 }
 
 .detailPanel {
