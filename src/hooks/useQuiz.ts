@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { NOTE_MAP } from '../constants';
 import { convertToFlat } from '../functions/noteConverter';
 import { randomN } from '../functions/random';
+import { showConfirmDialog } from '../functions/window';
 import type { Quiz, QuizSetting, QuizStatus } from '../type';
 import { useTimer } from './useTimer';
 
@@ -73,6 +74,13 @@ export const useQuiz = (setting: QuizSetting) => {
   };
 
   const handleClickReturnButton = () => {
+    if (
+      currentStatus !== 'view-result' &&
+      !showConfirmDialog('解いた内容が失われます。本当に終了しますか？')
+    ) {
+      return;
+    }
+
     setCurrentStatus('standby');
     setQuestion(undefined);
     setHistory([]);
