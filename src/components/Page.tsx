@@ -9,7 +9,7 @@ export const Page: FC = () => {
   return (
     <div className={styles.module}>
       <Header />
-      <main className={styles.main}>
+      <main>
         <QuizSection />
       </main>
       <Footer />

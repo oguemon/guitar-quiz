@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { useQuiz } from '../../hooks/useQuiz';
 import { useQuizSetting } from '../../hooks/useQuizSetting';
 import { AnswerPanel } from './AnswerPanel/AnswerPanel';
+import { Hero } from './Hero/Hero';
 import { QuestionPanel } from './QuestionPanel/QuestionPanel';
 import styles from './QuizSection.module.css';
 import { ResultPanel } from './ResultPanel/ResultPanel';
@@ -26,28 +27,30 @@ export const QuizSection: FC = () => {
 
   if (currentStatus === 'standby') {
     return (
-      <div className={styles.module}>
+      <Hero>
         <SettingPanel
           setting={quizSetting}
           isValidSetting={isValidSetting}
           onChangeSetting={handleChangeSetting}
           onClickStartButton={handleClickStartButton}
         />
-      </div>
+      </Hero>
     );
   }
 
   if (currentStatus === 'view-result') {
     return (
-      <div className={styles.module}>
-        <ResultPanel
-          setting={quizSetting}
-          history={history}
-          totalCount={totalCount}
-          seconds={seconds}
-          onClickRetryButton={handleClickStartButton}
-          onClickReturnButton={handleClickReturnButton}
-        />
+      <div className={styles.wrapper}>
+        <div className={styles.panelContainer}>
+          <ResultPanel
+            setting={quizSetting}
+            history={history}
+            totalCount={totalCount}
+            seconds={seconds}
+            onClickRetryButton={handleClickStartButton}
+            onClickReturnButton={handleClickReturnButton}
+          />
+        </div>
       </div>
     );
   }
@@ -57,25 +60,27 @@ export const QuizSection: FC = () => {
   }
 
   return (
-    <div className={styles.module}>
-      <QuestionPanel
-        totalCount={totalCount}
-        quiz={question}
-        hasAnswered={currentStatus === 'check-answer'}
-        seconds={seconds}
-        onAnswer={handleAnswer}
-      />
-      {currentStatus === 'check-answer' && (
-        <AnswerPanel
-          isOpenResultDialog={isOpenResultDialog}
-          isFinalAnswer={question.count < totalCount}
-          selectedAnswer={selectedAnswer}
-          correctAnswer={question.answer}
-          onClickNextButton={handleClickNextButton}
-          onClickViewResultButton={handleClickViewResultButton}
-          onClickReturnButton={handleClickReturnButton}
+    <div className={styles.wrapper}>
+      <div className={styles.panelContainer}>
+        <QuestionPanel
+          totalCount={totalCount}
+          quiz={question}
+          hasAnswered={currentStatus === 'check-answer'}
+          seconds={seconds}
+          onAnswer={handleAnswer}
         />
-      )}
+        {currentStatus === 'check-answer' && (
+          <AnswerPanel
+            isOpenResultDialog={isOpenResultDialog}
+            isFinalAnswer={question.count < totalCount}
+            selectedAnswer={selectedAnswer}
+            correctAnswer={question.answer}
+            onClickNextButton={handleClickNextButton}
+            onClickViewResultButton={handleClickViewResultButton}
+            onClickReturnButton={handleClickReturnButton}
+          />
+        )}
+      </div>
     </div>
   );
 };
