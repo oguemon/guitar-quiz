@@ -8,7 +8,7 @@ type Props = {
 
 export const Hero: FC<Props> = ({ children }) => {
   return (
-    <div className={styles.module}>
+    <div>
       <div className={styles.hero}>
         <div className={styles.wrapper}>
           <img

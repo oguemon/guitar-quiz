@@ -1,3 +1,10 @@
 .module {
   background-color: var(--color-background);
 }
+
+.main {
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
