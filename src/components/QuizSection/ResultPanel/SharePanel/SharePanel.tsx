@@ -25,7 +25,7 @@ export const SharePanel: FC<Props> = ({
 
   // テキストボックス
   const shareMessage =
-    `#ギター指板クイズくん で「${correctCount}点／${totalCount}点満点」取れました！\n` +
+    `#ギター指板音名クイズくん で「${correctCount}点／${totalCount}点満点」取れました！\n` +
     `「${seconds}秒」でこの点数とれるのすごくない？\n` +
     `【ルール】${quizType}／音名${quizAnswerOptions}／${quizStrings}弦\n` +
     'みんなも解いてみよう！\n' +
@@ -33,25 +33,25 @@ export const SharePanel: FC<Props> = ({
 
   // X
   const xBody: string =
-    `#ギター指板クイズくん で「${correctCount}問／全${totalCount}問」正解しました！\n` +
+    `#ギター指板音名クイズくん で「${correctCount}問／全${totalCount}問」正解しました！\n` +
     `「${seconds}秒」でこの点数をとれるのすごくない？\n` +
     `【ルール】${quizType}／音名${quizAnswerOptions}／${quizStrings}弦\n\n` +
     'みんなも解いてみよう！\n';
   const xHref = generateXShareLink(xBody);
 
   // メール
-  const mailSubject = 'ギター指板クイズくんで脅威的なスコアが出ました';
+  const mailSubject = 'ギター指板音名クイズくんで脅威的なスコアが出ました';
   const mailBody =
     '親戚各位\n\n' +
     'お世話になっております、〇〇です。\n' +
-    'ところでなのですが、先日「ギター指板クイズくん」というゲームをプレイしまして、\n' +
+    'ところでなのですが、先日「ギター指板音名クイズくん」というゲームをプレイしまして、\n' +
     `その結果、${totalCount}問中${correctCount}問を正解することができました！\n` +
     `解答にかかった時間は${seconds}秒で、なかなか上出来なのではないかと思います。\n\n` +
     `ちなみに、ルールは「${quizType}」で、音名の範囲は「${quizAnswerOptions}」、対象の弦は「${quizStrings}弦」でした。\n` +
     'ぜひとも皆さんもお試しくださいね。\n\n' +
     'もし質問などがございましたら、このメールにご返信願います。\n' +
     '取り急ぎご報告まで。\n\n' +
-    'ギター指板クイズくん\n' +
+    'ギター指板音名クイズくん\n' +
     'https://guitar-quiz.oguemon.com/';
   const mailHref = generateMailShareLink(mailSubject, mailBody);
 
