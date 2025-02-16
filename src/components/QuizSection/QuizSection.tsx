@@ -45,6 +45,7 @@ export const QuizSection: FC = () => {
           history={history}
           totalCount={totalCount}
           seconds={seconds}
+          onClickRetryButton={handleClickStartButton}
           onClickReturnButton={handleClickReturnButton}
         />
       </div>

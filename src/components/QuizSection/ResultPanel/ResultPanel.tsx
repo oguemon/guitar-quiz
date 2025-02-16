@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import type { QuizSetting } from '../../../type';
 import { ButtonContainer } from '../ButtonContainer/ButtonContainer';
+import { NormalButton } from '../NormalButton/NormalButton';
 import { PrimaryButton } from '../PrimaryButton/PrimaryButton';
 import styles from './ResultPanel.module.css';
 import { RulePanel } from './RulePanel/RulePanel';
@@ -11,6 +12,7 @@ type Props = {
   history: boolean[];
   totalCount: number;
   seconds: number;
+  onClickRetryButton: () => void;
   onClickReturnButton: () => void;
 };
 
@@ -19,6 +21,7 @@ export const ResultPanel: FC<Props> = ({
   history,
   totalCount,
   seconds,
+  onClickRetryButton,
   onClickReturnButton,
 }) => {
   const correctCount = history.filter((isCorrect) => isCorrect).length;
@@ -96,6 +99,10 @@ export const ResultPanel: FC<Props> = ({
       />
       <ButtonContainer>
         <PrimaryButton
+          label="リトライする"
+          onClick={() => onClickRetryButton()}
+        />
+        <NormalButton
           label="最初に戻る"
           onClick={() => onClickReturnButton()}
         />
