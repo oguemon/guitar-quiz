@@ -1,0 +1,33 @@
+.container {
+  display: inline-block;
+}
+
+.summary {
+  transition: color 0.1s linear;
+}
+
+.summary:hover {
+  color: var(--color-text-sub);
+}
+
+.panel {
+  padding-top: 10px;
+}
+
+.tableLine:nth-of-type(odd) {
+  background-color: #fee;
+}
+
+.tableLine:nth-of-type(even) {
+  background-color: #fff5f5;
+}
+
+.tableHeaderCell {
+  color: white;
+  background-color: #f55;
+}
+
+.tableBodyCell {
+  width: 120px;
+  text-align: center;
+}
