@@ -2,6 +2,7 @@
   --color-background: #fff2f2;
   --color-text-base: #333;
   --color-text-sub: #777;
+  --color-text-main: #d11;
   --color-border-main: #f88;
   --color-border-base: #333;
   --color-border-sub: #aaa;
@@ -28,6 +29,10 @@ ul {
 
 li {
   list-style-type: none;
+}
+
+a {
+  color: var(--color-text-main);
 }
 
 p {

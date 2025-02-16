@@ -1,7 +1,9 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { QUIZ_TITLE_MAP } from '../../../constants';
 import type { QuizSetting, StringPosition } from '../../../type';
+import { AboutDialog } from '../AboutDialog/AboutDialog';
 import { ButtonContainer } from '../ButtonContainer/ButtonContainer';
+import { NormalButton } from '../NormalButton/NormalButton';
 import { Panel } from '../Panel/Panel';
 import { PanelTitle } from '../PanelTitle/PanelTitle';
 import { PrimaryButton } from '../PrimaryButton/PrimaryButton';
@@ -23,6 +25,8 @@ export const SettingPanel: FC<Props> = ({
   onChangeSetting,
   onClickStartButton,
 }) => {
+  const [isOpenAboutDialog, setOpenAboutDialog] = useState(false);
+
   const handleChangeQuizType = (value: string) => {
     onChangeSetting({
       ...setting,
@@ -120,7 +124,15 @@ export const SettingPanel: FC<Props> = ({
           onClick={() => onClickStartButton()}
           disabled={!isValidSetting}
         />
+        <NormalButton
+          label="利用前の注意事項"
+          onClick={() => setOpenAboutDialog(true)}
+        />
       </ButtonContainer>
+      <AboutDialog
+        isOpen={isOpenAboutDialog}
+        onClose={() => setOpenAboutDialog(false)}
+      />
     </Panel>
   );
 };
