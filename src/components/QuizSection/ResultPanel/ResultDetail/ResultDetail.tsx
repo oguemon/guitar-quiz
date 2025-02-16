@@ -20,7 +20,7 @@ export const ResultDetail: FC<Props> = ({ history }) => {
             </thead>
             <tbody>
               {history.map((correct, index) => (
-                <tr className={styles.tableLine}>
+                <tr key={index} className={styles.tableLine}>
                   <td className={styles.tableBodyCell}>第{index + 1}問</td>
                   <td className={styles.tableBodyCell}>
                     {correct ? '⭕️' : '❌'}

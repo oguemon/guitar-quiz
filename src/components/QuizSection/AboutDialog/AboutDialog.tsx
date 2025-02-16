@@ -14,7 +14,7 @@ export const AboutDialog: FC<Props> = ({ isOpen, onClose }) => {
     <Dialog.Root open={isOpen}>
       <Dialog.Portal>
         <Dialog.Overlay className={styles.overlay} />
-        <Dialog.Content className={styles.content}>
+        <Dialog.Content className={styles.content} aria-describedby={undefined}>
           <Dialog.Title className={styles.title}>利用前の注意事項</Dialog.Title>
           <ul className={styles.list}>
             <li className={styles.listItem}>

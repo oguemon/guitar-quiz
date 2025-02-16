@@ -57,7 +57,7 @@ export const SharePanel: FC<Props> = ({
 
   return (
     <div className={styles.module}>
-      <textarea className={styles.textarea}>{shareMessage}</textarea>
+      <textarea className={styles.textarea} value={shareMessage} readOnly />
       <div className={styles.buttonList}>
         <ShareLink shareTo="x" href={xHref} />
         <ShareLink shareTo="mail" href={mailHref} />
