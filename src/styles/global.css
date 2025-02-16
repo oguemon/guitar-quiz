@@ -4,6 +4,7 @@
   --color-text-sub: #777;
   --color-border-main: #f88;
   --color-border-base: #333;
+  --color-border-sub: #aaa;
   --color-text-correct: #1a1;
   --color-text-not-correct: #d33;
 }
@@ -50,6 +51,12 @@ input[type='checkbox'] {
   clip: rect(0, 0, 0, 0);
 }
 
+textarea {
+  width: 100%;
+  font-size: inherit;
+  display: block;
+}
+
 button {
   color: var(--color-text-base);
   font-size: inherit;
@@ -60,4 +67,8 @@ button {
 
 button:disabled {
   cursor: not-allowed;
+}
+
+a {
+  cursor: pointer;
 }

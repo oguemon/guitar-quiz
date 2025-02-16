@@ -1,0 +1,29 @@
+.shareXLink,
+.shareMailLink {
+  max-width: 200px;
+  padding: 2px 5px;
+  display: block;
+  border-radius: 5px;
+  transition: background-color 0.2s linear;
+}
+
+.shareXLink {
+  background-color: #aaa;
+}
+
+.shareXLink:hover {
+  background-color: #ccc;
+}
+
+.shareMailLink {
+  background-color: #3cbf41;
+}
+
+.shareMailLink:hover {
+  background-color: #47da4c;
+}
+
+.shareImage {
+  width: 100%;
+  display: block;
+}

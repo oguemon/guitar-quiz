@@ -4,6 +4,7 @@ import { ButtonContainer } from '../ButtonContainer/ButtonContainer';
 import { PrimaryButton } from '../PrimaryButton/PrimaryButton';
 import styles from './ResultPanel.module.css';
 import { RulePanel } from './RulePanel/RulePanel';
+import { SharePanel } from './SharePanel/SharePanel';
 
 type Props = {
   setting: QuizSetting;
@@ -87,6 +88,12 @@ export const ResultPanel: FC<Props> = ({
           </div>
         </details>
       </div>
+      <SharePanel
+        setting={setting}
+        correctCount={correctCount}
+        totalCount={totalCount}
+        seconds={seconds}
+      />
       <ButtonContainer>
         <PrimaryButton
           label="最初に戻る"

@@ -1,0 +1,19 @@
+.module {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.textarea {
+  min-height: 160px;
+  padding: 10px;
+  border: 1px solid var(--color-border-sub);
+  border-radius: 5px;
+  resize: vertical;
+  field-sizing: content;
+}
+
+.buttonList {
+  display: flex;
+  gap: 10px;
+}
