@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { NOTE_MAP } from '../constants';
-import { convertToFlat } from '../functions/noteConverter';
+import { convertToFret } from '../functions/noteConverter';
 import { randomN } from '../functions/random';
 import { showConfirmDialog } from '../functions/window';
 import type { Quiz, QuizSetting, QuizStatus } from '../type';
@@ -34,14 +34,14 @@ export const useQuiz = (setting: QuizSetting) => {
     const targetString = setting.targetString;
     const stringPosition = targetString[randomN(targetString.length - 1)];
     const note = notes[randomN(notes.length - 1)];
-    const flatPosition = convertToFlat(stringPosition, note);
+    const fretPosition = convertToFret(stringPosition, note);
 
     if (setting.type === 'NoteQuiz') {
       return {
         type: 'NoteQuiz',
         count,
         stringPosition,
-        flatPosition,
+        fretPosition,
         answerOptions: notes.map((note) => NOTE_MAP[note]),
         answer: NOTE_MAP[note],
       };
@@ -52,7 +52,7 @@ export const useQuiz = (setting: QuizSetting) => {
         stringPosition,
         note: NOTE_MAP[note],
         answerOptions: Array.from({ length: 12 }).map((_, i) => String(i)),
-        answer: String(flatPosition),
+        answer: String(fretPosition),
       };
     }
   };

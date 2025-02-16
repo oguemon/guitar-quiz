@@ -20,7 +20,7 @@ export type NoteQuiz = {
   type: 'NoteQuiz';
   count: number;
   stringPosition: number;
-  flatPosition: number;
+  fretPosition: number;
   answerOptions: string[];
   answer: string; // 音名
 };

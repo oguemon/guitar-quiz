@@ -30,7 +30,7 @@ export const QuestionPanel: FC<Props> = ({
       <p>
         <strong className={styles.emphasis}>{quiz.stringPosition}</strong>
         弦の
-        <strong className={styles.emphasis}>{quiz.flatPosition}</strong>
+        <strong className={styles.emphasis}>{quiz.fretPosition}</strong>
         フレット
       </p>
     ) : (
