@@ -10,7 +10,7 @@ type Props = {
 export const RulePanel: FC<Props> = ({ setting }) => {
   const quizType = QUIZ_TITLE_MAP[setting.type];
   const quizAnswerOptions = ANSWER_OPTION_MAP[setting.answerOptions];
-  const quizStrings = setting.targetString.join('｜');
+  const quizStrings = setting.targetString.join(', ');
 
   return (
     <div className={styles.module}>
