@@ -19,6 +19,7 @@ export const QuizSection: FC = () => {
     isOpenResultDialog,
     seconds,
     handleClickStartButton,
+    handleClickRetryButton,
     handleAnswer,
     handleClickNextButton,
     handleClickViewResultButton,
@@ -47,7 +48,7 @@ export const QuizSection: FC = () => {
             history={history}
             totalCount={totalCount}
             seconds={seconds}
-            onClickRetryButton={handleClickStartButton}
+            onClickRetryButton={handleClickRetryButton}
             onClickReturnButton={handleClickReturnButton}
           />
         </div>

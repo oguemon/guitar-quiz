@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { NOTE_MAP } from '../constants';
 import { convertToFret } from '../functions/noteConverter';
 import { randomN } from '../functions/random';
+import { sendGTagEvent } from '../functions/sendGTagEvent';
 import { showConfirmDialog } from '../functions/window';
 import type { Quiz, QuizSetting, QuizStatus } from '../type';
 import { useTimer } from './useTimer';
@@ -19,6 +20,13 @@ export const useQuiz = (setting: QuizSetting) => {
   const [history, setHistory] = useState<boolean[]>([]);
   const [isOpenResultDialog, setIsOpenResultDialog] = useState(false);
   const { seconds, startTimer, stopTimer } = useTimer();
+
+  const gTagEventBasicParam = {
+    quiz_type: setting.type,
+    answer_option: setting.answerOptions,
+    target_string: setting.targetString.join(','),
+    total_count: setting.totalCount,
+  };
 
   // MEMO: 結果ダイアログを開いたら1秒後に閉じる
   useEffect(() => {
@@ -57,7 +65,7 @@ export const useQuiz = (setting: QuizSetting) => {
     }
   };
 
-  const handleClickStartButton = () => {
+  const startQuiz = () => {
     setCurrentStatus('select-answer');
     setQuestion(createNoteQuiz());
     setHistory([]);
@@ -65,21 +73,52 @@ export const useQuiz = (setting: QuizSetting) => {
     startTimer();
   };
 
+  const handleClickStartButton = () => {
+    sendGTagEvent('start_quiz', {
+      ...gTagEventBasicParam,
+    });
+    startQuiz();
+  };
+
+  const handleClickRetryButton = () => {
+    sendGTagEvent('retry_quiz', {
+      ...gTagEventBasicParam,
+    });
+    startQuiz();
+  };
+
   const handleAnswer = (value: string) => {
-    setCurrentStatus('check-answer');
     const isCorrect = question?.answer === value;
+    sendGTagEvent('click_answer', {
+      ...gTagEventBasicParam,
+      seconds,
+      count: question?.count ?? -1,
+      is_correct: isCorrect,
+    });
+    setCurrentStatus('check-answer');
     setHistory((history) => [...history, isCorrect]);
     setSelectedAnswer(value);
     setIsOpenResultDialog(true);
   };
 
   const handleClickNextButton = () => {
+    sendGTagEvent('click_next_quiz', {
+      ...gTagEventBasicParam,
+      seconds,
+      count: question?.count ?? -1,
+    });
     setCurrentStatus('select-answer');
     setQuestion(createNoteQuiz());
     setSelectedAnswer('');
   };
 
   const handleClickViewResultButton = () => {
+    const correctCount = history.filter((isCorrect) => isCorrect).length;
+    sendGTagEvent('show_result', {
+      ...gTagEventBasicParam,
+      seconds,
+      correct_count: correctCount,
+    });
     setCurrentStatus('view-result');
     setQuestion(undefined);
     setSelectedAnswer('');
@@ -94,6 +133,12 @@ export const useQuiz = (setting: QuizSetting) => {
       return;
     }
 
+    sendGTagEvent('return_home', {
+      ...gTagEventBasicParam,
+      seconds,
+      count: question?.count ?? -1,
+      is_result_view: currentStatus === 'view-result',
+    });
     setCurrentStatus('standby');
     setQuestion(undefined);
     setHistory([]);
@@ -110,6 +155,7 @@ export const useQuiz = (setting: QuizSetting) => {
     isOpenResultDialog,
     seconds,
     handleClickStartButton,
+    handleClickRetryButton,
     handleAnswer,
     handleClickNextButton,
     handleClickViewResultButton,
