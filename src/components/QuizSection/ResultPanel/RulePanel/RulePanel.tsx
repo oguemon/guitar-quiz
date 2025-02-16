@@ -1,4 +1,5 @@
-import { FC, useMemo } from 'react';
+import { FC } from 'react';
+import { ANSWER_OPTION_MAP, QUIZ_TITLE_MAP } from '../../../../constants';
 import type { QuizSetting } from '../../../../type';
 import styles from './RulePanel.module.css';
 
@@ -7,18 +8,9 @@ type Props = {
 };
 
 export const RulePanel: FC<Props> = ({ setting }) => {
-  const quizType = useMemo(() => {
-    if (setting.type === 'NoteQuiz') return '音名当て';
-    return '';
-  }, []);
-
-  const quizAnswerOptions = useMemo(() => {
-    if (setting.answerOptions === 'only-c-maj') return 'C-major';
-    return '全て';
-  }, []);
-  const quizStrings = useMemo(() => {
-    return setting.targetString.join('｜');
-  }, []);
+  const quizType = QUIZ_TITLE_MAP[setting.type];
+  const quizAnswerOptions = ANSWER_OPTION_MAP[setting.answerOptions];
+  const quizStrings = setting.targetString.join('｜');
 
   return (
     <div className={styles.module}>

@@ -7,7 +7,14 @@ type NoteQuizSetting = {
   totalCount: number;
 };
 
-export type QuizSetting = NoteQuizSetting;
+type FretQuizSetting = {
+  type: 'FretQuiz';
+  answerOptions: 'all' | 'only-c-maj';
+  targetString: StringPosition[];
+  totalCount: number;
+};
+
+export type QuizSetting = NoteQuizSetting | FretQuizSetting;
 
 export type NoteQuiz = {
   type: 'NoteQuiz';
@@ -15,10 +22,19 @@ export type NoteQuiz = {
   stringPosition: number;
   flatPosition: number;
   answerOptions: string[];
-  answer: string;
+  answer: string; // 音名
 };
 
-export type Quiz = NoteQuiz;
+export type FretQuiz = {
+  type: 'FretQuiz';
+  count: number;
+  stringPosition: number;
+  note: string;
+  answerOptions: string[];
+  answer: string; // フレット位置
+};
+
+export type Quiz = NoteQuiz | FretQuiz;
 
 export type QuizStatus =
   | 'standby'

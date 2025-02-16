@@ -20,11 +20,6 @@
   border-radius: 0 5px 5px 0;
 }
 
-/* MEMO: 音名当てのために一時的に配置 */
-.listItem:only-of-type .label {
-  border-radius: 5px;
-}
-
 .label:hover {
   background-color: #eee;
 }

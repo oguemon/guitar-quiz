@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { QUIZ_TITLE_MAP } from '../../../constants';
 import type { QuizSetting, StringPosition } from '../../../type';
 import { ButtonContainer } from '../ButtonContainer/ButtonContainer';
 import { PrimaryButton } from '../PrimaryButton/PrimaryButton';
@@ -56,17 +57,20 @@ export const SettingPanel: FC<Props> = ({
     <div className={styles.module}>
       <h2 className={styles.title}>クイズを開始する</h2>
       <ul className={styles.settingList}>
-        <SettingListItem title="クイズの種類">
+        <SettingListItem title="クイズの種別">
           <SingleCheckGroup
             name="quizType"
             value={setting.type}
-            options={[{ value: 'NoteQuiz', label: '音名当て' }]}
+            options={(['NoteQuiz', 'FretQuiz'] as const).map((value) => ({
+              value,
+              label: QUIZ_TITLE_MAP[value],
+            }))}
             onChange={(value) => handleChangeQuizType(value)}
           />
           <div className={styles.example}>
             {setting.type === 'NoteQuiz'
-              ? '弦とフレットの位置から音名を当てるクイズです。'
-              : ''}
+              ? '弦とフレットの位置から、音名を当てるクイズです。'
+              : '弦と音名から、フレットの位置を当てるクイズです。'}
           </div>
         </SettingListItem>
         <SettingListItem title="音名">
