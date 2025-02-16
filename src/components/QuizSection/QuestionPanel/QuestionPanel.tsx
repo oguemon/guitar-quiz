@@ -1,5 +1,7 @@
 import { FC } from 'react';
 import type { Quiz } from '../../../type';
+import { Panel } from '../Panel/Panel';
+import { PanelTitle } from '../PanelTitle/PanelTitle';
 import { AnswerButton } from './AnswerButton/AnswerButton';
 import { CountBadge } from './CountBadge/CountBadge';
 import styles from './QuestionPanel.module.css';
@@ -43,13 +45,13 @@ export const QuestionPanel: FC<Props> = ({
     );
 
   return (
-    <div className={styles.module}>
+    <Panel>
       <div className={styles.quiz}>
         <div className={styles.header}>
           <CountBadge currentCount={quiz.count} totalCount={totalCount} />
           <Timer seconds={seconds} />
         </div>
-        <h2 className={styles.title}>{quizTitle}</h2>
+        <PanelTitle title={quizTitle} />
         {quizCondition}
       </div>
       {!hasAnswered && (
@@ -66,6 +68,6 @@ export const QuestionPanel: FC<Props> = ({
           </div>
         </div>
       )}
-    </div>
+    </Panel>
   );
 };

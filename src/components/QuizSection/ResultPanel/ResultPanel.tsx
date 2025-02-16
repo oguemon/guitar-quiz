@@ -2,9 +2,10 @@ import { FC } from 'react';
 import type { QuizSetting } from '../../../type';
 import { ButtonContainer } from '../ButtonContainer/ButtonContainer';
 import { NormalButton } from '../NormalButton/NormalButton';
+import { Panel } from '../Panel/Panel';
+import { PanelTitle } from '../PanelTitle/PanelTitle';
 import { PrimaryButton } from '../PrimaryButton/PrimaryButton';
 import { ResultDetail } from './ResultDetail/ResultDetail';
-import styles from './ResultPanel.module.css';
 import { ResultSummary } from './ResultSummary/ResultSummary';
 import { RulePanel } from './RulePanel/RulePanel';
 import { SharePanel } from './SharePanel/SharePanel';
@@ -29,8 +30,8 @@ export const ResultPanel: FC<Props> = ({
   const correctCount = history.filter((isCorrect) => isCorrect).length;
   const correctRate = Math.floor((correctCount / totalCount) * 100);
   return (
-    <div className={styles.module}>
-      <h2 className={styles.title}>結果発表</h2>
+    <Panel>
+      <PanelTitle title="結果発表" />
       <ResultSummary
         correctCount={correctCount}
         correctRate={correctRate}
@@ -55,6 +56,6 @@ export const ResultPanel: FC<Props> = ({
           onClick={() => onClickReturnButton()}
         />
       </ButtonContainer>
-    </div>
+    </Panel>
   );
 };

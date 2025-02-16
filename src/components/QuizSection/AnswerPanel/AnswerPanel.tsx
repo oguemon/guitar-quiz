@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { ButtonContainer } from '../ButtonContainer/ButtonContainer';
 import { NormalButton } from '../NormalButton/NormalButton';
+import { Panel } from '../Panel/Panel';
 import { PrimaryButton } from '../PrimaryButton/PrimaryButton';
 import { ResultDialog } from '../ResultDialog/ResultDialog';
 import styles from './AnswerPanel.module.css';
@@ -26,7 +27,7 @@ export const AnswerPanel: FC<Props> = ({
 }) => {
   const isCorrect = selectedAnswer === correctAnswer;
   return (
-    <div className={styles.module}>
+    <Panel>
       <div className={styles.result}>
         {isCorrect ? (
           <strong className={styles.correct}>✅ 正解</strong>
@@ -59,6 +60,6 @@ export const AnswerPanel: FC<Props> = ({
         />
       </ButtonContainer>
       <ResultDialog isOpen={isOpenResultDialog} isCorrect={isCorrect} />
-    </div>
+    </Panel>
   );
 };

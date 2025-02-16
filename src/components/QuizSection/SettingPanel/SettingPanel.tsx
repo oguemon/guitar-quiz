@@ -2,6 +2,8 @@ import { FC } from 'react';
 import { QUIZ_TITLE_MAP } from '../../../constants';
 import type { QuizSetting, StringPosition } from '../../../type';
 import { ButtonContainer } from '../ButtonContainer/ButtonContainer';
+import { Panel } from '../Panel/Panel';
+import { PanelTitle } from '../PanelTitle/PanelTitle';
 import { PrimaryButton } from '../PrimaryButton/PrimaryButton';
 import { MultipleCheckGroup } from './MultipleCheckGroup/MultipleCheckGroup';
 import { SettingListItem } from './SettingListItem/SettingListItem';
@@ -54,8 +56,8 @@ export const SettingPanel: FC<Props> = ({
   };
 
   return (
-    <div className={styles.module}>
-      <h2 className={styles.title}>クイズを開始する</h2>
+    <Panel>
+      <PanelTitle title="クイズを開始する" />
       <ul className={styles.settingList}>
         <SettingListItem title="クイズの種別">
           <SingleCheckGroup
@@ -119,6 +121,6 @@ export const SettingPanel: FC<Props> = ({
           disabled={!isValidSetting}
         />
       </ButtonContainer>
-    </div>
+    </Panel>
   );
 };
